@@ -4,11 +4,11 @@ const mongodb = require('mongoose')
 const exphbs = require('express-handlebars')
 
 // INCLUDE LOCALS
-const todoRoutes = require('./routes/todos')
+const todoRoutes = require('./routes/main')
 
 // CONSTANTS
 const PORT = process.env.PORT || 3001
-const PASSWOD = process.env.PASSWORD
+const PASSWORD = process.env.PASSWORD
 const uri = `mongodb+srv://nick:${PASSWORD}@cluster0.zvqcc.mongodb.net/test`
 // CREATE APP
 const App = express()
@@ -28,7 +28,6 @@ async function start(){
     try {
         await mongodb.connect(uri, {
             useNewUrlParser: true,
-            useFindAndModify: false,
             useUnifiedTopology: true
         })
     } catch (e) {

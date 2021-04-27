@@ -21,8 +21,8 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/create', async (req, res) => {
-    const todo = new Todo({
-       title: req.body.title 
+    const todo = new model_ToDo({
+       title: req.body.title
     })
     await todo.save()
     res.redirect('/')
