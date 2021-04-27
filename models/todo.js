@@ -11,4 +11,4 @@ const schema = new Schema({
     }
 })
 
-module.exports = model('Todo', schema)
+module.exports = model('ToDo', schema)

@@ -4,12 +4,14 @@ const mongodb = require('mongoose')
 const exphbs = require('express-handlebars')
 
 // INCLUDE LOCALS
-const todoRoutes = require('./routes/main')
+const todoRoutes = require('./routes/todo')
 
 // CONSTANTS
-const PORT = process.env.PORT || 3001
-const PASSWORD = process.env.PASSWORD
+const PORT = process.env.PORT || 5000
+const PASSWORD = process.env.MONGO_PASS
 const uri = `mongodb+srv://nick:${PASSWORD}@cluster0.zvqcc.mongodb.net/test`
+
+
 // CREATE APP
 const App = express()
 const hbs = exphbs.create({
@@ -22,7 +24,8 @@ App.engine('hbs', hbs.engine)
 App.set('view engine', 'hbs')
 App.set('views', 'views')
 App.use(todoRoutes)
-App.use(express.urlencoded({extended: true}))
+// App.use(express.urlencoded({extended: true}))
+
 // BODY PROGRAMM
 async function start(){
     try {

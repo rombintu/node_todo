@@ -1,3 +1,4 @@
+const { urlencoded } = require("body-parser")
 const { Router } = require("express")
 const model_ToDo = require('../models/todo')
 const router = Router()
@@ -20,7 +21,7 @@ router.get('/create', (req, res) => {
     })
 })
 
-router.post('/create', async (req, res) => {
+router.post('/create', urlencoded({extended: false}), async (req, res) => {
     const todo = new model_ToDo({
        title: req.body.title
     })
