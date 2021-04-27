@@ -1,0 +1,21 @@
+<h2>TODOS LIST</h2>
+{{#if todos.lenght}}
+    <ul>
+        {{#each todos}}
+            <li class="todo">
+                <label>
+                    {{#if completed}}
+                        <input type="checkbox" checked>
+                        <span class="completed">{{title}}</span>
+                    {{else}}
+                        <input type="checkbox">
+                        <span>{{title}}</span>
+                    {{/if}}
+                        <button class="btn btn-small">Сохранить</button>
+                </label>
+            </li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>NO FOUND TODOS >_<</p>
+{{/if}}
