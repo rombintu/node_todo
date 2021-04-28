@@ -1,6 +1,7 @@
 // INCLUDE MODULES
 const express = require('express')
-const mongodb = require('mongoose')
+const path = require('path')
+// const mongodb = require('mongoose')
 const exphbs = require('express-handlebars')
 
 // INCLUDE LOCALS
@@ -8,8 +9,8 @@ const todoRoutes = require('./routes/todo')
 
 // CONSTANTS
 const PORT = process.env.PORT || 5000
-const PASSWORD = process.env.MONGO_PASS
-const uri = `mongodb+srv://nick:${PASSWORD}@cluster0.zvqcc.mongodb.net/test`
+// const PASSWORD = process.env.MONGO_PASS
+// const uri = `mongodb+srv://nick:${PASSWORD}@cluster0.zvqcc.mongodb.net/test`
 
 
 // CREATE APP
@@ -24,19 +25,20 @@ App.engine('hbs', hbs.engine)
 App.set('view engine', 'hbs')
 App.set('views', 'views')
 App.use(todoRoutes)
+App.use(express.static(path.join(__dirname, '/public')))
 // App.use(express.urlencoded({extended: true}))
 
 // BODY PROGRAMM
-async function start(){
-    try {
-        await mongodb.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
-    } catch (e) {
-        console.log(e)
-    }
-}
+// async function start(){
+//     try {
+//         await mongodb.connect(uri, {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true
+//         })
+//     } catch (e) {
+//         console.log(e)
+//     }
+// }
 
 // LISTEN
 App.listen(PORT, () => {
@@ -44,4 +46,4 @@ App.listen(PORT, () => {
 })
 
 // MAIN
-start()
+// start()

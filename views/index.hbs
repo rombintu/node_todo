@@ -1,21 +1,25 @@
-<h2>TODOS LIST</h2>
+<h2>Список задач</h2>
 {{#if todos.length}}
-    <ul>
-        {{#each todos}}
-            <li class="todo">
-                <label>
-                    {{#if completed}}
-                        <input type="checkbox" checked>
-                        <span class="completed">{{title}}</span>
-                    {{else}}
-                        <input type="checkbox">
-                        <span>{{title}}</span>
-                    {{/if}}
-                        <button class="btn btn-small">Сохранить</button>
-                </label>
-            </li>
-        {{/each}}
-    </ul>
+  <ul>
+    {{#each todos}}
+      <li class="todo">
+        <form action="/completed" method="POST">
+          <label>
+            {{#if this.completed}}
+              <input type="checkbox" checked>
+              <span class="completed">{{this.title}}</span>
+            {{else}}
+              <input type="checkbox">
+              <span>{{this.title}}</span>
+            {{/if}}
+
+            <input type="hidden" value="{{this.id}}" name="id">
+            <button class="btn btn-small" type="submit">Сохранить</button>
+          </label>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
 {{else}}
-    <p>NO FOUND TODOS >_<</p>
+    <p>Задачи не найдены</p>
 {{/if}}
