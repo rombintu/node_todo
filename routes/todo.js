@@ -24,7 +24,7 @@ router.get('/create', (req, res) => {
     })
 })
 
-router.post('/create', urlencoded({extended: false}), async(req, res) => {
+router.post('/create', urlencoded({extended: false}), async (req, res) => {
     let title = req.body.title
     if (title) {
         api.create(title)
@@ -38,7 +38,7 @@ router.post('/create', urlencoded({extended: false}), async(req, res) => {
     
 })
 
-router.post('/completed', urlencoded({extended: false}), async(req, res) => {
+router.post('/completed', urlencoded({extended: false}), async (req, res) => {
     let id = req.body.id
     let status = true
     await api.completed(status, id)
@@ -46,7 +46,7 @@ router.post('/completed', urlencoded({extended: false}), async(req, res) => {
     await res.redirect('/')
 })
 
-router.post('/del_all', async(req, res) => {
+router.post('/del_all', async (req, res) => {
     api.delete_all()
     await res.redirect('/')
 })
