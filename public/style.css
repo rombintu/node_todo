@@ -19,3 +19,7 @@
 .todo i {
   z-index: 2;
 }
+
+#btn_del_all {
+  background-color:rgba(248, 62, 62, 0.767);
+}

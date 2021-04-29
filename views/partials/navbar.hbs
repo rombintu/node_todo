@@ -1,17 +1,21 @@
 <nav class="blue darken-4">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Simple ToDo on Node</a>
+      <a href="/" class="brand-logo">Simple ToDo on NodeJS</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a href="https://github.com/rombintu/node_todo">Разработчик</a>
+        </li>
+
         {{#if isIndex}}
-        <li class="active"><a href="/">ToDo</a></li>
+        <li class="active"><a href="/">Главная</a></li>
         {{else}}
-        <li><a href="/">ToDo</a></li>
+        <li><a href="/">Главная</a></li>
         {{/if}}
 
         {{#if isCreate}}
-        <li class="active"><a href="/create">Create new todo</a></li>
+        <li class="active"><a href="/create">Создать задачу</a></li>
         {{else}}
-        <li><a href="/create">Create new todo</a></li>
+        <li><a href="/create">Создать задачу</a></li>
         {{/if}}
       </ul>
     </div>

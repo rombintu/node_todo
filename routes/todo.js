@@ -1,14 +1,16 @@
+// IMPORT
 const { urlencoded } = require("body-parser")
 const { Router } = require("express")
-// const model_ToDo = require('../models/todo')
-const router = Router()
-const api = require('../dbfunc/api')
-// const alert = require('alert')
 
+const api = require('../dbfunc/api')
+
+// CONSTS
+const router = Router()
+
+// ROUTES
 router.get('/', async (req, res) => {
-    // const todos = await model_ToDo.find({})
     todos = api.select()
-    res.render('index', {
+    await res.render('index', {
         title: 'ToDo List',
         isIndex: true,
         todos
@@ -25,8 +27,8 @@ router.get('/create', (req, res) => {
 router.post('/create', urlencoded({extended: false}), async(req, res) => {
     let title = req.body.title
     if (title) {
-        await api.save(title)
-        res.redirect('/')
+        api.create(title)
+        await res.redirect('/')
     } else {
         res.render('create', {
             error: 'Напишите что-нибудь...',
@@ -41,7 +43,13 @@ router.post('/completed', urlencoded({extended: false}), async(req, res) => {
     let status = true
     await api.completed(status, id)
 
-    res.redirect('/')
+    await res.redirect('/')
 })
 
+router.post('/del_all', async(req, res) => {
+    api.delete_all()
+    await res.redirect('/')
+})
+
+// EXPORTS
 module.exports = router

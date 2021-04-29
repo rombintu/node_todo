@@ -3,11 +3,17 @@ var db = new sqlite3.Database('database.db');
 
 
 module.exports = {
-    save: function(title){
+    create: function(title){
         let sql = db.prepare("INSERT INTO todo (title) VALUES(?)")
         sql.run(title)
         sql.finalize()
         // console.log(title)
+    },
+
+    delete_all: function(){
+        let sql = db.prepare("DELETE FROM todo")
+        sql.run()
+        sql.finalize()
     },
 
     select: function(){
