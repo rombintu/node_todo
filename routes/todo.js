@@ -41,7 +41,7 @@ router.post('/create', urlencoded({extended: false}), async (req, res) => {
 router.post('/completed', urlencoded({extended: false}), async (req, res) => {
     let id = req.body.id
     let status = true
-    await api.completed(status, id)
+    api.completed(status, id)
 
     await res.redirect('/')
 })
